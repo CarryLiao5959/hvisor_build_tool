@@ -2,7 +2,7 @@
 *.pyo
 /*.patch
 /.repo/
-/build*/
+build*/
 !build/conf/
 pyshtables.py
 pstage/
