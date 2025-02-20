@@ -3,6 +3,7 @@
 /*.patch
 /.repo/
 /build*/
+!build/conf/
 pyshtables.py
 pstage/
 scripts/oe-git-proxy-socks
