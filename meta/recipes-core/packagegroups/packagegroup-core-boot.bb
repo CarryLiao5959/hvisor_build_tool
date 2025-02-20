@@ -39,3 +39,5 @@ RDEPENDS_${PN} = "\
 RRECOMMENDS_${PN} = "\
     ${VIRTUAL-RUNTIME_base-utils-syslog} \
     ${MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS}"
+
+RDEPENDS_${PN}_remove = "v86d"
