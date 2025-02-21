@@ -1,3 +1,6 @@
 [submodule "meta-arm"]
     path = meta-arm
-	url = https://git.yoctoproject.org/meta-arm
+    url = https://git.yoctoproject.org/meta-arm
+[submodule "backup/meta-arm"]
+    path = backup/meta-arm
+    url = https://git.yoctoproject.org/meta-arm
