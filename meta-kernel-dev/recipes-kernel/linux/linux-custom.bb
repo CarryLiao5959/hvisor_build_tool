@@ -10,7 +10,7 @@ LINUX_VERSION = "5.4"
 PR = "r0"
 
 # 指定源码的 URI
-SRC_URI = "file://{HOME}/hvisor_build_tool/linux-5.4.tar.gz"
+SRC_URI = "file://${HOME}/hvisor_build_tool/linux-5.4.tar.gz"
 
 # 配置文件和补丁
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
