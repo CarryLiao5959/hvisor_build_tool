@@ -1,0 +1,3 @@
+[submodule "meta-arm"]
+    path = meta-arm
+	url = https://git.yoctoproject.org/meta-arm
