@@ -4,3 +4,7 @@
 [submodule "backup/meta-arm"]
     path = backup/meta-arm
     url = https://git.yoctoproject.org/meta-arm
+[submodule "linux-5.4"]
+    path = linux-5.4
+    url = https://github.com/torvalds/linux.git
+    branch = v5.4

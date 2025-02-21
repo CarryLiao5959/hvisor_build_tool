@@ -1,7 +1,9 @@
+*.tar.gz
 *.pyc
 *.pyo
 /*.patch
 /.repo/
+linux*/
 build*/cache/
 build*/downloads/
 build*/sstate-cache/
