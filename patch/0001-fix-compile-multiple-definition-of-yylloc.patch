@@ -1,0 +1,26 @@
+From a751cc7a366a95d93e0a5676527b7c62cf6385d5 Mon Sep 17 00:00:00 2001
+From: "yocto@gmail.com" <you@example.com>
+Date: Mon, 3 Mar 2025 21:24:49 +0800
+Subject: [PATCH] fix compile multiple definition of yylloc
+
+---
+ scripts/dtc/dtc-lexer.l | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/dtc/dtc-lexer.l b/scripts/dtc/dtc-lexer.l
+index 5c6c3fd557d7..bf3406ae1c70 100644
+--- a/scripts/dtc/dtc-lexer.l
++++ b/scripts/dtc/dtc-lexer.l
+@@ -23,7 +23,8 @@ LINECOMMENT	"//".*\n
+ #include "srcpos.h"
+ #include "dtc-parser.tab.h"
+ 
+-YYLTYPE yylloc;
++//YYLTYPE yylloc;
++extern YYLTYPE yylloc;
+ extern bool treesource_error;
+ 
+ /* CAUTION: this will stop working if we ever use yyless() or yyunput() */
+-- 
+2.34.1
+
