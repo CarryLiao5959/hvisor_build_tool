@@ -8,3 +8,6 @@
 	path = linux-5.4
 	url = https://github.com/torvalds/linux.git
     branch = v5.4
+[submodule "ruxos"]
+	path = ruxos
+	url = https://github.com/syswonder/ruxos.git
