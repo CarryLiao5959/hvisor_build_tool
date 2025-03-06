@@ -1,9 +1,9 @@
 git submodule init
 git submodule update
 
-cd meta-
+cd meta-openembedde
 git checkout dunfell
-cd ../meta-openembedded
+cd ../
 
 cd meta-arm
 git checkout dunfell
