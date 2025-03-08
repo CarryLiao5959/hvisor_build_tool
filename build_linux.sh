@@ -1,3 +1,7 @@
+#!/bin/bash
+
+rm -f linux-5.4
+
 git submodule init
 git submodule update
 
@@ -11,5 +15,10 @@ cd linux-5.4
 git apply ../patch/0001-fix-compile-multiple-definition-of-yylloc.patch
 cd ../
 tar cvzf linux-5.4.tar.gz linux-5.4
-sh ./oe-init-build-env
+. ./oe-init-build-env
+
+cd ../
+cp backup/conf/* build/conf/ -ar
+
+
 bitbake linux-custom

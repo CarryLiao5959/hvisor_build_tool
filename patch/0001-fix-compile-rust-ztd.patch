@@ -1,0 +1,36 @@
+diff --git a/scripts/make/cargo.mk b/scripts/make/cargo.mk
+index 308896d..7df3883 100644
+--- a/scripts/make/cargo.mk
++++ b/scripts/make/cargo.mk
+@@ -15,7 +15,9 @@ build_args := \
+   --target $(TARGET) \
+   --target-dir $(CURDIR)/target \
+   $(build_args-$(MODE)) \
+-  $(verbose)
++  $(verbose) \
++  -Z build-std=core,alloc \
++  -Z build-std-features=compiler-builtins-mem
+ 
+ RUSTFLAGS := -C link-arg=-T$(LD_SCRIPT) -C link-arg=-no-pie
+ RUSTDOCFLAGS := --enable-index-page -Zunstable-options -D rustdoc::broken_intra_doc_links
+diff --git a/scripts/make/qemu.mk b/scripts/make/qemu.mk
+index 5a63404..c132471 100644
+--- a/scripts/make/qemu.mk
++++ b/scripts/make/qemu.mk
+@@ -70,11 +70,11 @@ endif
+ qemu_args-debug := $(qemu_args-y) -s -S
+ 
+ # Do not use KVM for debugging
+-ifeq ($(shell uname), Darwin)
+-  qemu_args-$(ACCEL) += -cpu host -accel hvf
+-else
+-  qemu_args-$(ACCEL) += -cpu host -accel kvm
+-endif
++#ifeq ($(shell uname), Darwin)
++#  qemu_args-$(ACCEL) += -cpu host -accel hvf
++#else
++#  qemu_args-$(ACCEL) += -cpu host -accel kvm
++#endif
+ 
+ define run_qemu
+   @printf "    $(CYAN_C)Running$(END_C) on qemu...\n"
