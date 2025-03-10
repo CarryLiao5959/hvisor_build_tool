@@ -1,0 +1,143 @@
+choice ARCH
+    prompt "Architecture"
+    default ARCH_AARCH64
+
+    config ARCH_AARCH64
+        bool "AArch64"
+
+    config ARCH_RISCV
+        bool "RISC-V"
+
+    config ARCH_LOONG
+        bool "LoongArch64"
+endchoice
+
+
+choice PLATFORM
+    prompt "Platform"
+    default PLATFORM_QEMU
+
+    config PLATFORM_QEMU
+        bool "QEMU"
+
+    config PLATFORM_NXP
+        bool "NXP"
+endchoice
+
+
+choice VM_COUNT
+    prompt "Number of Virtual Machines"
+    default VM_COUNT_1
+    help
+      Select the number of virtual machines to be supported.
+
+    config VM_COUNT_1
+        bool "1 VM"
+
+    config VM_COUNT_2
+        bool "2 VMs"
+
+    config VM_COUNT_3
+        bool "3 VMs"
+endchoice
+
+
+config CPU_COUNT
+    int "Number of CPU"
+    default 1
+    range 1 4
+
+
+config MEMORY_SIZE
+    int "Memory Size (G)"
+    default 1
+    range 1 4
+
+
+config VIRTIO_BLK
+    bool "Enable Virtio Block Device"
+    default y
+    help
+        Enable support for Virtio block devices in the virtual machine.
+
+
+config EXTRA_VIRTIO_BLK
+    bool "Enable an extra Virtio Block Device"
+    default n
+    help
+        Enable an additional Virtio block device in the virtual machine.
+
+
+menu "Console and Filesystem Configuration"
+
+config VIRTIO_CONSOLE
+    bool "Enable Virtio Console Device"
+    default n
+    help
+        Enable support for Virtio console devices in the virtual machine.
+
+
+config VIRTIO_9P
+    bool "Enable Virtio 9P Filesystem"
+    default n
+    help
+        Enable support for Virtio 9P filesystem sharing.
+
+endmenu
+
+
+menu "Network Device"
+
+config VIRTIO_NET
+    bool "Enable Virtio Network Device"
+    default y
+    help
+        Enable support for Virtio network devices in the virtual machine.
+
+
+config NETWORK_TAP
+    bool "Enable TAP Network Device"
+    default n
+    help
+        Enable a TAP network device for the virtual machine.
+
+
+config NETWORK_USER
+    bool "Enable User Mode Network Device"
+    default n
+    help
+        Enable a user mode network device with port forwarding.
+
+
+config NETWORK_USER_NET2
+    bool "Enable User Mode Network Device net2"
+    default n
+    help
+        Enable a user mode network device 'net2' with specific settings.
+
+
+config NETWORK_USER_NET3
+    bool "Enable User Mode Network Device net3"
+    default n
+    help
+        Enable a user mode network device 'net3' with specific settings.
+
+endmenu
+
+
+menu "Debugging and Testing Device"
+
+config TRACE_EVENTS
+    bool "Enable Trace Events"
+    default n
+    help
+        Enable trace events for debugging purposes.
+
+
+config PCI_TESTDEV
+    bool "Enable PCI Test Device"
+    default n
+    help
+        Enable a PCI test device for development and testing purposes.
+
+endmenu

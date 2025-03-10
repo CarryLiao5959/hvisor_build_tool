@@ -1,0 +1,194 @@
+menu "System Configuration"
+
+choice ARCH
+    prompt "Architecture"
+    default ARCH_AARCH64
+
+    config ARCH_AARCH64
+        bool "AArch64"
+        select CPU_CORTEX_A57
+        select GIC_V3
+
+    config ARCH_RISCV
+        bool "RISC-V"
+
+    config ARCH_LOONG
+        bool "LoongArch64"
+endchoice
+
+
+choice PLATFORM
+    prompt "Platform"
+    default PLATFORM_QEMU
+
+    config PLATFORM_QEMU
+        bool "QEMU"
+
+    config PLATFORM_NXP
+        bool "NXP"
+endchoice
+
+endmenu
+
+
+menu "CPU Configuration"
+
+config CPU_CORTEX_A57
+    bool "Enable Cortex-A57 CPU"
+    default y
+
+config CPU_COUNT
+    int "Number of CPU Cores"
+    default 1
+    range 1 4
+
+endmenu
+
+
+menu "Memory Configuration"
+
+config MEMORY_SIZE
+    int "Memory Size (MB)"
+    default 256
+    range 256 1024
+
+config MEMORY_RAM_START
+    hex "RAM Physical Start Address"
+    default 0x80000000
+
+config MEMORY_RAM_SIZE
+    hex "RAM Size"
+    default 0x10000000
+
+endmenu
+
+
+menu "Interrupt Configuration"
+
+config GIC_V3
+    bool "Enable ARM GICv3"
+    default y
+
+config INTERRUPT_75
+    bool "Enable Interrupt 75"
+    default y
+
+config INTERRUPT_76
+    bool "Enable Interrupt 76"
+    default y
+
+config INTERRUPT_78
+    bool "Enable Interrupt 78"
+    default y
+
+endmenu
+
+
+menu "PCI Configuration"
+
+config PCI_SUPPORT
+    bool "Enable PCI Support"
+    default y
+
+config PCI_ECAM_BASE
+    hex "PCI ECAM Base Address"
+    default 0x4010000000
+
+config PCI_ECAM_SIZE
+    hex "PCI ECAM Size"
+    default 0x10000000
+
+config PCI_IO_BASE
+    hex "PCI IO Base Address"
+    default 0x3eff0000
+
+config PCI_IO_SIZE
+    hex "PCI IO Size"
+    default 0x10000
+
+config PCI_MEM32_BASE
+    hex "PCI 32-bit Memory Base"
+    default 0x10000000
+
+config PCI_MEM32_SIZE
+    hex "PCI 32-bit Memory Size"
+    default 0x2eff0000
+
+config PCI_MEM64_BASE
+    hex "PCI 64-bit Memory Base"
+    default 0x8000000000
+
+config PCI_MEM64_SIZE
+    hex "PCI 64-bit Memory Size"
+    default 0x8000000000
+
+config NUM_PCI_DEVS
+    int "Number of PCI Devices"
+    default 1
+    range 1 32
+
+endmenu
+
+
+menu "VirtIO Configuration"
+
+config VIRTIO_SUPPORT
+    bool "Enable VirtIO Support"
+    default y
+
+config VIRTIO_BLK
+    bool "Enable Virtio Block Device"
+    default y
+
+config VIRTIO_SERIAL
+    bool "Enable Virtio Serial Device"
+    default y
+
+config VIRTIO_MMIO
+    bool "Enable Virtio MMIO Transport"
+    default y
+
+endmenu
+
+
+menu "Kernel and Boot Configuration"
+
+config KERNEL_FILE
+    string "Kernel Image Filepath"
+    default "./Image"
+
+config DTB_FILE
+    string "Device Tree Blob Filepath"
+    default "./linux3.dtb"
+
+config KERNEL_LOAD_PADDR
+    hex "Kernel Load Physical Address"
+    default 0x80400000
+
+config DTB_LOAD_PADDR
+    hex "DTB Load Physical Address"
+    default 0x80000000
+
+config ENTRY_POINT
+    hex "Kernel Entry Point"
+    default 0x80400000
+
+config BOOTARGS
+    string "Kernel Boot Arguments"
+    default "earlycon=virtio,mmio,0xa004000 console=hvc0 root=/dev/vda rw"
+
+endmenu
+
+
+menu "Debugging and Testing"
+
+config TRACE_EVENTS
+    bool "Enable Trace Events"
+    default n
+
+config PCI_TESTDEV
+    bool "Enable PCI Test Device"
+    default n
+
+endmenu
+

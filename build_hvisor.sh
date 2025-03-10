@@ -10,11 +10,11 @@ cd ../
 cd meta-arm
 git checkout dunfell
 cd ../
-#tar cvzf hvisor.tar.gz hvisor
+tar cvzf hvisor.tar.gz hvisor
 
 . ./oe-init-build-env
 
 cd ../
 cp backup/hvisor_conf/* build/conf/ -ar
 
-#bitbake hvisor
+bitbake hvisor

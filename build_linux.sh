@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -f linux-5.4
+rm -rf linux-5.4
 
 git submodule init
 git submodule update
