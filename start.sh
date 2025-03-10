@@ -1,8 +1,13 @@
 sudo apt-get update
 sudo apt-get install chrpath diffstat gawk
+# linux
 sudo apt-get install python3-distutils
 sudo apt-get install chrpath gawk texinfo
 sudo apt-get install build-essential
+# ruxos
+sudo apt-get install clang libclang-dev
+# hvisor
+sudo apt-get install u-boot-tools
 
 mkdir ./toolchain
 
