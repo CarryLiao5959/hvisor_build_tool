@@ -1,5 +1,8 @@
 sudo apt-get update
 sudo apt-get install chrpath diffstat gawk
+sudo apt-get install python3-distutils
+sudo apt-get install chrpath gawk texinfo
+sudo apt-get install build-essential
 
 mkdir ./toolchain
 
