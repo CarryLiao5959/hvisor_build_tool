@@ -6,7 +6,7 @@ UBUNTU_VERSION="22.04"      # Ubuntu 版本 (20.04/22.04)
 ARCH="arm64"                # 目标架构 (arm64/armhf)
 ROOTFS_IMG="ubuntu.img"     # 输出镜像文件名
 IMG_SIZE="2G"               # 镜像大小 (默认2G)
-EXTRA_PACKAGES="git sudo vim bash-completion kmod net-tools iputils-ping resolvconf ntpdate screen"  # 需安装的额外软件包[1](@ref)
+EXTRA_PACKAGES="git sudo vim bash-completion kmod net-tools iputils-ping resolvconf ntpdate screen"  # 需安装的额外软件包
 ENABLE_USER_CONFIG=1        # 是否添加用户和主机配置 (0=禁用,1=启用)
 
 # -------------------- 依赖检查与安装 --------------------
@@ -17,7 +17,7 @@ install_dependencies() {
             sudo apt-get install -y "$cmd"
         fi
     done
-    sudo update-binfmts --enable qemu-aarch64  # 解决chroot架构问题[1](@ref)
+    sudo update-binfmts --enable qemu-aarch64  # 解决chroot架构问题
 }
 
 # -------------------- 创建并挂载虚拟磁盘 --------------------
