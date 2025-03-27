@@ -1,10 +1,11 @@
-# image generator for hvisor
+# image & rootfs generator for hvisor
 
 ## Support
 
 1. hvisor binary
 2. linux image (for zone0)
 3. ruxos image
+4. ubuntu rootfs
 
 > env for QEMU
 
@@ -15,7 +16,7 @@
 use devel branch, then execute command:
 
 ```
-sh start.sh
+sh build_start.sh
 ```
 
 ### build
@@ -43,3 +44,13 @@ sh start.sh
     ```
     
     > image path: /home/yocto/hvisor_ build_tool/build/tmp/work/core2-64-poky-linux/ruxos/0.1-r0/ruxos/apps/helloworld/
+
+- build rootfs
+    
+    ```
+    sh build_rootfs.sh
+    ```
+    
+    > rootfs path: ./ubuntu-base-22.04-base-arm64.tar.gz
+& ./ubuntu.img
+
