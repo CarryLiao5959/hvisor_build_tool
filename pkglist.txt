@@ -1,0 +1,10 @@
+bash-completion
+kmod
+net-tools
+iputils-ping
+resolvconf
+ntpdate
+screen
+nginx
+postgresql-14
+python3-pip
