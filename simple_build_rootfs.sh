@@ -3,15 +3,49 @@
 
 set -e
 
+ARCH_TYPE="$1"
+
 # 硬编码参数
 QEMU_SRC_PATH="$HOME/qemu-9.1.0-rc4/build/qemu-system-aarch64"
 ROOTFS_DIR="rootfs"
-OUTPUT_IMG="rootfs111.img"
-TAR_FILE="ubuntu-base-22.04.5-base-arm64.tar.gz"
+OUTPUT_IMG="rootfs_simple.img"
 
-# 清理旧文件
-[ -d $ROOTFS_DIR ] && sudo rm -rf $ROOTFS_DIR
-[ -f $OUTPUT_IMG ] && sudo rm -f $OUTPUT_IMG
+# 架构URL映射
+case $ARCH_TYPE in
+    arm64) 
+        URL="http://cdimage.ubuntu.com/ubuntu-base/releases/22.04/release/ubuntu-base-22.04.5-base-arm64.tar.gz"
+        ;;
+    riscv) 
+        URL="http://cdimage.ubuntu.com/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.2-base-riscv64.tar.gz" 
+        ;;
+    nxp)   
+        URL="http://cdimage.ubuntu.com/ubuntu-base/releases/22.04/release/ubuntu-base-22.04.5-base-arm64.tar.gz"
+        ;;
+    *) 
+        echo "用法: $0 [arm64|riscv|nxp]" 
+        exit 1
+        ;;
+esac
+
+TAR_FILE=$(basename "$URL")
+
+# # 在清理阶段添加强制卸载逻辑
+# sudo umount -lf $ROOTFS_DIR/proc 2>/dev/null
+# sudo umount -lf $ROOTFS_DIR/sys 2>/dev/null
+# sudo umount -lf $ROOTFS_DIR/dev/pts 2>/dev/null
+# sudo umount -lf $ROOTFS_DIR/dev 2>/dev/null
+# sudo umount -lf $ROOTFS_DIR 2>/dev/null
+# # 清理旧文件
+# [ -d $ROOTFS_DIR ] && sudo rm -rf $ROOTFS_DIR
+# [ -f $OUTPUT_IMG ] && sudo rm -f $OUTPUT_IMG
+
+# 下载基础包
+if [ ! -f "$TAR_FILE" ]; then
+    echo "下载 $ARCH_TYPE 架构基础包..."
+    wget --show-progress -qO "$TAR_FILE" "$URL"
+else
+    echo "检测到已存在基础包: $TAR_FILE，跳过下载"
+fi
 
 # 创建磁盘镜像
 echo "创建1GB磁盘镜像..."
