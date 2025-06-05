@@ -12,3 +12,6 @@
 	path = meta-openembedded
 	url = https://github.com/openembedded/meta-openembedded.git
 
+[submodule "/home/user/hvisor_build_tool/nxp_custom"]
+	path = /home/user/hvisor_build_tool/nxp_custom
+	url = https://github.com/nxp-imx/meta-imx.git
