@@ -1,13 +1,16 @@
 [submodule "meta-arm"]
 	path = meta-arm
 	url = https://git.yoctoproject.org/meta-arm
+
 [submodule "linux-5.4"]
 	path = linux-5.4
 	url = https://github.com/torvalds/linux.git
         branch = v5.4
+
 [submodule "ruxos"]
 	path = ruxos
 	url = https://github.com/syswonder/ruxos.git
+
 [submodule "meta-openembedded"]
 	path = meta-openembedded
 	url = https://github.com/openembedded/meta-openembedded.git
