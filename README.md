@@ -7,6 +7,7 @@
 3. ruxos image
 4. ubuntu rootfs
 
+
 > env for QEMU
 
 ## How to Run
@@ -47,6 +48,13 @@ sh build_start.sh
 
 - **build rootfs image**
     
+    - supported board
+        
+        - aarch64 qemu virtio
+        - zcu102
+        - ok6254 virtio
+        - nxp (ref: https://hvisor.syswonder.org/chap02/NXPIMX8.html)
+    
     default cmd
     ```
     sh build_rootfs.sh
@@ -64,4 +72,5 @@ sh build_start.sh
     
     > rootfs path: ./ubuntu-base-22.04-base-arm64.tar.gz
 & ./ubuntu.img
+
 
